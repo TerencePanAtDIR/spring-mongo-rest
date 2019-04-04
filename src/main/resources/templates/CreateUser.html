@@ -5,9 +5,9 @@
     <link href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
           rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="css/CreateUser.css">
+    <link rel="stylesheet" type="text/css" href="css/CreateUser.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/popper.js/popper.min.js"></script>
@@ -15,7 +15,7 @@
 <body>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Events</a>
+    <a class="navbar-brand" href="#">Timekeeper</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#bs-example-navbar" aria-controls="bs-example-navbar"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -24,18 +24,18 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar">
         <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="#">Event Overview<span
+            <li class="nav-item active"><a class="nav-link" href="#">Create User<span
                     class="sr-only">(current)</span></a></li>
-            <li><a class="nav-link" href="/recentEvents">Recent Events</a></li>
+            <li><a class="nav-link" href="/recentEvents">Manage Users</a></li>
             <li class="nav-item">
                 <div class="dropdown">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        Manage Event Components
+                        Manage Timesheets
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/ManageLocation">Manage Location</a>
-                        <a class="dropdown-item" href="/ManageAttendees">Manage Attendees</a>
-                        <a class="dropdown-item" href="/ManageSupplies">Manage Supplies</a>
+                        <a class="dropdown-item" href="/ManageLocation">New Timesheet</a>
+                        <a class="dropdown-item" href="/ManageAttendees">Edit Timesheet</a>
+                        <a class="dropdown-item" href="/ManageSupplies">Search Timesheets</a>
                     </div>
                 </div>
             </li>
@@ -59,27 +59,32 @@
 
 <form:form class="create-user-form" method="POST"
            action="" modelAttribute ="person">
-    <div class="form-group" >
-        <label for="eventName">Event Name</label>
-        <input type="text" class="form-control" id="eventName"
-               placeholder="Enter Event Name">
-    </div>
     <div class="row">
         <div class="col">
-            <label for="eventStartTime">Event Start Time</label>
-            <input type="datetime-local" class="form-control" id="eventStartTime"
-                   placeholder="Enter Event Start Time">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName"
+                   placeholder="First Name">
         </div>
         <div class="col">
-            <label for="eventEndTime">Event End Time</label>
-            <input type="datetime-local" class="form-control" id="eventEndTime"
-                   placeholder="Enter Event End Time">
+            <label for="middleName">Middle Name</label>
+            <input type="text" class="form-control" id="middleName"
+                   placeholder="Middle Name">
+        </div>
+        <div class="col">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName"
+                   placeholder="Last Name">
         </div>
     </div>
     <div class="form-group" >
         <label for="eventLocation">Event Location</label>
         <input type="text" class="form-control" id="eventLocation"
                placeholder="Enter Event Location">
+    </div>
+    <div class="form-group" >
+        <label for="eventName">Event Name</label>
+        <input type="text" class="form-control" id="eventName"
+               placeholder="Enter Event Name">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form:form>
