@@ -56,7 +56,7 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <form class="form-inline" th:action="@{/searchUsers}" method="get">
-                    <input type="text" class="form-control sm" placeholder="Search Users" th:name="searchString"/>
+                    <input type="text" class="form-control sm}" placeholder="Search Users" th:name="searchString"/>
                     <button href="#Display" type="submit" class="btn btn-primary">Search</button>
                 </form>
             </li>
@@ -69,23 +69,23 @@
     </div><!-- /.navbar-collapse -->
 </nav>
 <div class="d-flex">
-    <form:form class="create-user-form" method="POST"
-               action="" modelAttribute="person">
+    <form class="create-user-form" method="POST"
+               action="" th:object="${person}">
         <div class="row">
             <div class="col">
-                <label path="firstName" for="firstName">First Name</label>
-                <input path="firstName" type="text" class="form-control" id="firstName"
-                       placeholder="First Name">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName"
+                       th:field="*{firstName}" placeholder="First Name">
             </div>
             <div class="col">
                 <label for="middleName">Middle Name</label>
                 <input type="text" class="form-control" id="middleName"
-                       placeholder="Middle Name">
+                       th:field="*{middleName}" placeholder="Middle Name">
             </div>
             <div class="col">
                 <label for="lastName">Last Name</label>
                 <input type="text" class="form-control" id="lastName"
-                       placeholder="Last Name">
+                       th:field="*{lastName}" placeholder="Last Name">
             </div>
         </div>
         <div class="row">
@@ -93,19 +93,26 @@
                 <div class="form-group">
                     <label for="division">Division</label>
                     <input type="text" class="form-control" id="division"
-                           placeholder="Enter Division">
+                           th:field="*{personDivision}" placeholder="Enter Division">
                 </div>
             </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="division">Position</label>
+                    <input type="text" class="form-control" id="personPosition"
+                           th:field="*{personPosition}" placeholder="Enter User's Position">
+                </div>
+            </div>
+            <div class="col">
                 <div class="form-group">
                     <label for="idCode">ID Code</label>
                     <input type="text" class="form-control" id="idCode"
-                           placeholder="Enter Employee Id">
+                           th:field="*{idCode}" placeholder="Enter Employee Id">
                 </div>
-            <div class="col">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-    </form:form>
+    </form>
 </div>
 </body>
 </html>
