@@ -14,7 +14,7 @@ public class UserController {
 
     @PostMapping(path = "/upsertEmployee")
     public String createUser(@ModelAttribute("user") Person user){
-
+        userRepository.save(user);
 
         return "success";
     }

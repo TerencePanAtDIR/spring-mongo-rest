@@ -10,7 +10,7 @@ import java.util.Objects;
 @Document(collection = "persons")
 public class Person {
     @Id
-    private Long id;
+    private String id;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -19,11 +19,11 @@ public class Person {
     private String personPosition;
     private String encryptedPassword;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

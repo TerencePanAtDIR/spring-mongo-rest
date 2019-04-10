@@ -11,18 +11,18 @@ import java.util.Objects;
 @Document(collection = "timesheets")
 public class Timesheet {
     @Id
-    private Long id;
+    private String id;
     private List<DayWorked> daysWorked;
     private Boolean timesheetSigned;
     private LocalDateTime timesheetSignedDate;
     private LocalDate periodStart;
     private LocalDate periodEnd;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
