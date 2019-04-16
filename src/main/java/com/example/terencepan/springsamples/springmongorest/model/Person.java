@@ -4,6 +4,7 @@ package com.example.terencepan.springsamples.springmongorest.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -18,6 +19,8 @@ public class Person {
     private String idCode;
     private String personPosition;
     private String encryptedPassword;
+    private List<String> userRoles;
+    private boolean isUserActivated;
 
     public String getId() {
         return id;
@@ -83,6 +86,14 @@ public class Person {
         this.encryptedPassword = encryptedPassword;
     }
 
+    public boolean getIsUserActivated() {
+        return isUserActivated;
+    }
+
+    public void setIsUserActivated(boolean isUserActivated) {
+        this.isUserActivated = isUserActivated;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,12 +106,13 @@ public class Person {
                 Objects.equals(personDivision, person.personDivision) &&
                 Objects.equals(idCode, person.idCode) &&
                 Objects.equals(personPosition, person.personPosition) &&
-                Objects.equals(encryptedPassword, person.encryptedPassword);
+                Objects.equals(encryptedPassword, person.encryptedPassword) &&
+                Objects.equals(isUserActivated, person.isUserActivated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode, personPosition, encryptedPassword);
+        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode, personPosition, encryptedPassword, isUserActivated);
     }
 
     @Override
@@ -113,7 +125,8 @@ public class Person {
                 ", personDivision='" + personDivision + '\'' +
                 ", idCode='" + idCode + '\'' +
                 ", personPosition='" + personPosition + '\'' +
-                ", encryptedPassword=" + encryptedPassword +
+                ", encryptedPassword=" + encryptedPassword + '\'' +
+                ", isUserActivated=" + isUserActivated +
                 '}';
     }
 }
