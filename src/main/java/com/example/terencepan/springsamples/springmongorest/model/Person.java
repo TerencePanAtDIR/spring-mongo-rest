@@ -2,8 +2,10 @@ package com.example.terencepan.springsamples.springmongorest.model;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +14,7 @@ import java.util.Objects;
 public class Person {
     @Id
     private String id;
+    @NotNull
     private String firstName;
     private String middleName;
     private String lastName;
@@ -21,6 +24,8 @@ public class Person {
     private String encryptedPassword;
     private List<String> userRoles;
     private boolean isUserActivated;
+    @Indexed(unique=true)
+    private String email;
 
     public String getId() {
         return id;
@@ -94,6 +99,14 @@ public class Person {
         this.isUserActivated = isUserActivated;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -107,12 +120,13 @@ public class Person {
                 Objects.equals(idCode, person.idCode) &&
                 Objects.equals(personPosition, person.personPosition) &&
                 Objects.equals(encryptedPassword, person.encryptedPassword) &&
-                Objects.equals(isUserActivated, person.isUserActivated);
+                Objects.equals(isUserActivated, person.isUserActivated) &&
+                Objects.equals(email, person.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode, personPosition, encryptedPassword, isUserActivated);
+        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode, personPosition, encryptedPassword, isUserActivated, email);
     }
 
     @Override
@@ -126,7 +140,8 @@ public class Person {
                 ", idCode='" + idCode + '\'' +
                 ", personPosition='" + personPosition + '\'' +
                 ", encryptedPassword=" + encryptedPassword + '\'' +
-                ", isUserActivated=" + isUserActivated +
+                ", isUserActivated=" + isUserActivated + '\'' +
+                ", email=" + email +
                 '}';
     }
 }
