@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
+
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping(path = "/upsertEmployee")
+    @PostMapping(path = "/insertEmployee")
     public ResponseEntity<Person> createUser(@ModelAttribute("user") Person user){
         String sampleInitialPassword = SampleUtils.randomString(7);
         System.out.println(sampleInitialPassword);
@@ -25,4 +26,5 @@ public class UserController {
 
         return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
     }
+
 }

@@ -2,6 +2,7 @@ package com.example.terencepan.springsamples.springmongorest.model;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -22,6 +23,8 @@ public class Person {
     private String idCode;
     private String personPosition;
     private String encryptedPassword;
+    @Transient
+    private String confirmPassword;
     private List<String> userRoles;
     private boolean isUserActivated;
     @Indexed(unique=true)
@@ -91,6 +94,14 @@ public class Person {
         this.encryptedPassword = encryptedPassword;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public boolean getIsUserActivated() {
         return isUserActivated;
     }
@@ -120,13 +131,15 @@ public class Person {
                 Objects.equals(idCode, person.idCode) &&
                 Objects.equals(personPosition, person.personPosition) &&
                 Objects.equals(encryptedPassword, person.encryptedPassword) &&
+                Objects.equals(confirmPassword, person.confirmPassword) &&
                 Objects.equals(isUserActivated, person.isUserActivated) &&
                 Objects.equals(email, person.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode, personPosition, encryptedPassword, isUserActivated, email);
+        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode,
+                personPosition, encryptedPassword, confirmPassword, isUserActivated, email);
     }
 
     @Override
@@ -140,6 +153,7 @@ public class Person {
                 ", idCode='" + idCode + '\'' +
                 ", personPosition='" + personPosition + '\'' +
                 ", encryptedPassword=" + encryptedPassword + '\'' +
+                ", encryptedPassword=" + confirmPassword + '\'' +
                 ", isUserActivated=" + isUserActivated + '\'' +
                 ", email=" + email +
                 '}';

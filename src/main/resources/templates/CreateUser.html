@@ -73,6 +73,11 @@
                th:action="@{/upsertEmployee}" th:object="${person}">
         <div class="row">
             <div class="col">
+                <span th:if="${created == 'Y'}" class="label label-success">Created User with E-Mail: </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
                 <label for="firstName">First Name</label>
                 <input type="text" class="form-control" id="firstName"
                        th:field="*{firstName}" placeholder="First Name" required>
