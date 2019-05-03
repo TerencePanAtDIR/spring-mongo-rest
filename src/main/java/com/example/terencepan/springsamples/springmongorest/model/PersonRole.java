@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Objects;
 
 @Document(collection = "personroles")
-public class PersonRoles {
+public class PersonRole {
     @Id
     private String id;
     private String roleTypeName;
@@ -40,7 +40,7 @@ public class PersonRoles {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PersonRoles that = (PersonRoles) o;
+        PersonRole that = (PersonRole) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(roleTypeName, that.roleTypeName) &&
                 Objects.equals(roleTypeDescription, that.roleTypeDescription);
@@ -53,7 +53,7 @@ public class PersonRoles {
 
     @Override
     public String toString() {
-        return "PersonRoles{" +
+        return "PersonRole{" +
                 "id='" + id + '\'' +
                 ", roleTypeName='" + roleTypeName + '\'' +
                 ", roleTypeDescription='" + roleTypeDescription + '\'' +

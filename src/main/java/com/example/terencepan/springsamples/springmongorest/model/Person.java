@@ -118,12 +118,21 @@ public class Person {
         this.email = email;
     }
 
+    public List<String> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<String> userRoles) {
+        this.userRoles = userRoles;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(id, person.id) &&
+        return isUserActivated == person.isUserActivated &&
+                Objects.equals(id, person.id) &&
                 Objects.equals(firstName, person.firstName) &&
                 Objects.equals(middleName, person.middleName) &&
                 Objects.equals(lastName, person.lastName) &&
@@ -132,30 +141,30 @@ public class Person {
                 Objects.equals(personPosition, person.personPosition) &&
                 Objects.equals(encryptedPassword, person.encryptedPassword) &&
                 Objects.equals(confirmPassword, person.confirmPassword) &&
-                Objects.equals(isUserActivated, person.isUserActivated) &&
+                Objects.equals(userRoles, person.userRoles) &&
                 Objects.equals(email, person.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode,
-                personPosition, encryptedPassword, confirmPassword, isUserActivated, email);
+        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode, personPosition, encryptedPassword, confirmPassword, userRoles, isUserActivated, email);
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", personDivision='" + personDivision + '\'' +
                 ", idCode='" + idCode + '\'' +
                 ", personPosition='" + personPosition + '\'' +
-                ", encryptedPassword=" + encryptedPassword + '\'' +
-                ", encryptedPassword=" + confirmPassword + '\'' +
-                ", isUserActivated=" + isUserActivated + '\'' +
-                ", email=" + email +
+                ", encryptedPassword='" + encryptedPassword + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", userRoles=" + userRoles +
+                ", isUserActivated=" + isUserActivated +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
