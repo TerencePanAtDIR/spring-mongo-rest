@@ -2,20 +2,15 @@ package com.example.terencepan.springsamples.springmongorest.model;
 
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Objects;
 
 
 @Document(collection = "persons")
 public class Person {
     @Id
-    private String id;
-    @NotNull
+    private Long id;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -23,18 +18,12 @@ public class Person {
     private String idCode;
     private String personPosition;
     private String encryptedPassword;
-    @Transient
-    private String confirmPassword;
-    private List<String> userRoles;
-    private boolean isUserActivated;
-    @Indexed(unique=true)
-    private String email;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -94,77 +83,37 @@ public class Person {
         this.encryptedPassword = encryptedPassword;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public boolean getIsUserActivated() {
-        return isUserActivated;
-    }
-
-    public void setIsUserActivated(boolean isUserActivated) {
-        this.isUserActivated = isUserActivated;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<String> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(List<String> userRoles) {
-        this.userRoles = userRoles;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return isUserActivated == person.isUserActivated &&
-                Objects.equals(id, person.id) &&
+        return Objects.equals(id, person.id) &&
                 Objects.equals(firstName, person.firstName) &&
                 Objects.equals(middleName, person.middleName) &&
                 Objects.equals(lastName, person.lastName) &&
                 Objects.equals(personDivision, person.personDivision) &&
                 Objects.equals(idCode, person.idCode) &&
                 Objects.equals(personPosition, person.personPosition) &&
-                Objects.equals(encryptedPassword, person.encryptedPassword) &&
-                Objects.equals(confirmPassword, person.confirmPassword) &&
-                Objects.equals(userRoles, person.userRoles) &&
-                Objects.equals(email, person.email);
+                Objects.equals(encryptedPassword, person.encryptedPassword);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode, personPosition, encryptedPassword, confirmPassword, userRoles, isUserActivated, email);
+        return Objects.hash(id, firstName, middleName, lastName, personDivision, idCode, personPosition, encryptedPassword);
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", personDivision='" + personDivision + '\'' +
                 ", idCode='" + idCode + '\'' +
                 ", personPosition='" + personPosition + '\'' +
-                ", encryptedPassword='" + encryptedPassword + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                ", userRoles=" + userRoles +
-                ", isUserActivated=" + isUserActivated +
-                ", email='" + email + '\'' +
+                ", encryptedPassword=" + encryptedPassword +
                 '}';
     }
 }

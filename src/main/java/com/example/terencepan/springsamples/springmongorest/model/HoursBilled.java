@@ -8,16 +8,16 @@ import java.util.Objects;
 @Document(collection = "hoursbilled")
 public class HoursBilled {
     @Id
-    private String id;
+    private Long id;
     private Integer hoursBilled;
     private String billingAccount;
     private String billingType;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
